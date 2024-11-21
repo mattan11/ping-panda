@@ -8,26 +8,10 @@ import { AnimatedList } from "@/components/ui/animated-list"
 import { DiscordMessage } from "@/components/discord-message"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism"
-import { Icons } from "@/components/icons"
-import { reviews } from "@/utils"
+import { codeSnippet, reviews } from "@/utils"
 import CustomerReview from "@/components/CustomerReview"
 
 const Page = () => {
-  const codeSnippet = `await fetch("http://localhost:3000/api/v1/events", {
-    method: "POST",
-    body: JSON.stringify({
-      category: "sale",
-      fields: {
-        plan: "PRO",
-        email: "zoe.martinez2001@email.com",
-        amount: 49.00
-      }
-    }),
-    headers: {
-      Authorization: "Bearer <YOUR_API_KEY>"
-    }
-  })`
-
   return (
     <>
       <section className="relative py-24 sm:py-32 bg-brand-25">
