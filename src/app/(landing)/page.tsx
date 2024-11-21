@@ -1,8 +1,7 @@
-import { Heading } from "@/app/components/heading"
-import { MaxWidthWrapper } from "@/app/components/max-width-wrapper"
+import { Heading } from "@/components/heading"
+import { MaxWidthWrapper } from "@/components/max-width-wrapper"
 import { Check, Star } from "lucide-react"
-import {ShinyButton} from "@/app/components/shiny-button";
-
+import { ShinyButton } from "@/components/shiny-button"
 
 const Page = () => {
   //   const codeSnippet = `await fetch("http://localhost:3000/api/v1/events", {
