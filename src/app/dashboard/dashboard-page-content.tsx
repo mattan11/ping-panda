@@ -146,8 +146,8 @@ export const DashboardPageContent = () => {
               Delete Category
             </h2>
             <p className="text-sm/6 text-gray-600">
-              Are you sure you want to delete the category "{deletingCategory}"?
-              This action cannot be undone.
+              Are you sure you want to delete the category &quot;
+              {deletingCategory}&quot;? This action cannot be undone.
             </p>
           </div>
 

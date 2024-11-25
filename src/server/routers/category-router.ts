@@ -4,8 +4,9 @@ import { privateProcedure } from "../procedures"
 import { startOfDay, startOfMonth, startOfWeek } from "date-fns"
 import { z } from "zod"
 // import { CATEGORY_NAME_VALIDATOR } from "@/lib/validators/category-validator"
-// import { parseColor } from "@/utils"
+import { parseColor } from "@/utils"
 import { HTTPException } from "hono/http-exception"
+import { CATEGORY_NAME_VALIDATOR } from "@/lib/validators/category-validator"
 
 export const categoryRouter = router({
   getEventCategories: privateProcedure.query(async ({ c, ctx }) => {
@@ -84,34 +85,34 @@ export const categoryRouter = router({
       }
     }),
 
-  // createEventCategory: privateProcedure
-  //   .input(
-  //     z.object({
-  //       name: CATEGORY_NAME_VALIDATOR,
-  //       color: z
-  //         .string()
-  //         .min(1, "Color is required")
-  //         .regex(/^#[0-9A-F]{6}$/i, "Invalid color format."),
-  //       emoji: z.string().emoji("Invalid emoji").optional(),
-  //     })
-  //   )
-  //   .mutation(async ({ c, ctx, input }) => {
-  //     const { user } = ctx
-  //     const { color, name, emoji } = input
-  //
-  //     // TODO: ADD PAID PLAN LOGIC
-  //
-  //     const eventCategory = await db.eventCategory.create({
-  //       data: {
-  //         name: name.toLowerCase(),
-  //         color: parseColor(color),
-  //         emoji,
-  //         userId: user.id,
-  //       },
-  //     })
-  //
-  //     return c.json({ eventCategory })
-  //   }),
+  createEventCategory: privateProcedure
+    .input(
+      z.object({
+        name: CATEGORY_NAME_VALIDATOR,
+        color: z
+          .string()
+          .min(1, "Color is required")
+          .regex(/^#[0-9A-F]{6}$/i, "Invalid color format."),
+        emoji: z.string().emoji("Invalid emoji").optional(),
+      })
+    )
+    .mutation(async ({ c, ctx, input }) => {
+      const { user } = ctx
+      const { color, name, emoji } = input
+
+      // TODO: ADD PAID PLAN LOGIC
+
+      const eventCategory = await db.eventCategory.create({
+        data: {
+          name: name.toLowerCase(),
+          color: parseColor(color),
+          emoji,
+          userId: user.id,
+        },
+      })
+
+      return c.json({ eventCategory })
+    }),
 
   // insertQuickstartCategories: privateProcedure.mutation(async ({ ctx, c }) => {
   //   const categories = await db.eventCategory.createMany({
