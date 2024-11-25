@@ -136,7 +136,7 @@ const Page = () => {
                   </p>
                   <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
                     Get notified about critical events the moment they happen,
-                    no matter if you're at home or on the go.
+                    no matter if you&apos;re at home or on the go.
                   </p>
                 </div>
 
