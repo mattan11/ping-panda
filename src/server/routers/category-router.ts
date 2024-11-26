@@ -4,7 +4,7 @@ import { privateProcedure } from "../procedures"
 import { startOfDay, startOfMonth, startOfWeek } from "date-fns"
 import { z } from "zod"
 // import { CATEGORY_NAME_VALIDATOR } from "@/lib/validators/category-validator"
-import { parseColor } from "@/utils"
+import { parseColor, QUICKSTART_CATEGORIES } from "@/utils"
 import { HTTPException } from "hono/http-exception"
 import { CATEGORY_NAME_VALIDATOR } from "@/lib/validators/category-validator"
 
@@ -114,57 +114,53 @@ export const categoryRouter = router({
       return c.json({ eventCategory })
     }),
 
-  // insertQuickstartCategories: privateProcedure.mutation(async ({ ctx, c }) => {
-  //   const categories = await db.eventCategory.createMany({
-  //     data: [
-  //       { name: "bug", emoji: "🐛", color: 0xff6b6b },
-  //       { name: "sale", emoji: "💰", color: 0xffeb3b },
-  //       { name: "question", emoji: "🤔", color: 0x6c5ce7 },
-  //     ].map((category) => ({
-  //       ...category,
-  //       userId: ctx.user.id,
-  //     })),
-  //   })
-  //
-  //   return c.json({ success: true, count: categories.count })
-  // }),
-  //
-  // pollCategory: privateProcedure
-  //   .input(z.object({ name: CATEGORY_NAME_VALIDATOR }))
-  //   .query(async ({ c, ctx, input }) => {
-  //     const { name } = input
-  //
-  //     const category = await db.eventCategory.findUnique({
-  //       where: { name_userId: { name, userId: ctx.user.id } },
-  //       include: {
-  //         _count: {
-  //           select: {
-  //             events: true,
-  //           },
-  //         },
-  //       },
-  //     })
-  //
-  //     if (!category) {
-  //       throw new HTTPException(404, {
-  //         message: `Category "${name}" not found`,
-  //       })
-  //     }
-  //
-  //     const hasEvents = category._count.events > 0
-  //
-  //     return c.json({ hasEvents })
-  //   }),
-  //
+  insertQuickstartCategories: privateProcedure.mutation(async ({ ctx, c }) => {
+    const categories = await db.eventCategory.createMany({
+      data: QUICKSTART_CATEGORIES.map((category) => ({
+        ...category,
+        userId: ctx.user.id,
+      })),
+    })
+
+    return c.json({ success: true, count: categories.count })
+  }),
+
+  pollCategory: privateProcedure
+    .input(z.object({ name: CATEGORY_NAME_VALIDATOR }))
+    .query(async ({ c, ctx, input }) => {
+      const { name } = input
+
+      const category = await db.eventCategory.findUnique({
+        where: { name_userId: { name, userId: ctx.user.id } },
+        include: {
+          _count: {
+            select: {
+              events: true,
+            },
+          },
+        },
+      })
+
+      if (!category) {
+        throw new HTTPException(404, {
+          message: `Category "${name}" not found`,
+        })
+      }
+
+      const hasEvents = category._count.events > 0
+
+      return c.json({ hasEvents })
+    }),
+
   getEventsByCategoryName: privateProcedure
-    // .input(
-    //   z.object({
-    //     name: CATEGORY_NAME_VALIDATOR,
-    //     page: z.number(),
-    //     limit: z.number().max(50),
-    //     timeRange: z.enum(["today", "week", "month"]),
-    //   })
-    // )
+    .input(
+      z.object({
+        name: CATEGORY_NAME_VALIDATOR,
+        page: z.number(),
+        limit: z.number().max(50),
+        timeRange: z.enum(["today", "week", "month"]),
+      })
+    )
     .query(async ({ c, ctx, input }) => {
       const { name, page, limit, timeRange } = input
 

@@ -98,6 +98,7 @@ export const CreateEventCategoryModal = ({
                   <button
                     key={premadeColor}
                     type="button"
+                    style={{ backgroundColor: premadeColor }}
                     className={cn(
                       `bg-[${premadeColor}]`,
                       "size-10 rounded-full ring-2 ring-offset-2 transition-all",

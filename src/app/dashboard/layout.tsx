@@ -1,13 +1,12 @@
 "use client"
 
 import { buttonVariants } from "@/components/ui/button"
-// import { Modal } from "@/components/ui/modal"
+import { Modal } from "@/components/ui/modal"
 import { cn } from "@/utils"
 import { UserButton } from "@clerk/nextjs"
 import { Gem, Home, Key, LucideIcon, Menu, Settings, X } from "lucide-react"
 import Link from "next/link"
 import { PropsWithChildren, useState } from "react"
-// import { Drawer } from "vaul"
 
 interface SidebarItem {
   href: string
@@ -128,25 +127,25 @@ const Layout = ({ children }: PropsWithChildren) => {
           </div>
         </div>
 
-        {/*<Modal*/}
-        {/*  className="p-4"*/}
-        {/*  showModal={isDrawerOpen}*/}
-        {/*  setShowModal={setIsDrawerOpen}*/}
-        {/*>*/}
-        {/*  <div className="flex justify-between items-center mb-4">*/}
-        {/*    <p className="text-lg/7 font-semibold text-brand-900">*/}
-        {/*      Ping<span className="text-brand-700">Panda</span>*/}
-        {/*    </p>*/}
-        {/*    <button*/}
-        {/*      aria-label="Close modal"*/}
-        {/*      onClick={() => setIsDrawerOpen(false)}*/}
-        {/*    >*/}
-        {/*      <X className="size-6" />*/}
-        {/*    </button>*/}
-        {/*  </div>*/}
+        <Modal
+          className="p-4"
+          showModal={isDrawerOpen}
+          setShowModal={setIsDrawerOpen}
+        >
+          <div className="flex justify-between items-center mb-4">
+            <p className="text-lg/7 font-semibold text-brand-900">
+              Ping<span className="text-brand-700">Panda</span>
+            </p>
+            <button
+              aria-label="Close modal"
+              onClick={() => setIsDrawerOpen(false)}
+            >
+              <X className="size-6" />
+            </button>
+          </div>
 
-        {/*  <Sidebar />*/}
-        {/*</Modal>*/}
+          <Sidebar />
+        </Modal>
       </div>
     </div>
   )

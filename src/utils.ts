@@ -67,3 +67,9 @@ export const EMOJI_OPTIONS = [
   { emoji: "💡", label: "Idea" },
   { emoji: "🔔", label: "Notification" },
 ]
+
+export const QUICKSTART_CATEGORIES = [
+  { name: "bug", emoji: "🐛", color: 0xff6b6b },
+  { name: "sale", emoji: "💰", color: 0xffeb3b },
+  { name: "question", emoji: "🤔", color: 0x6c5ce7 },
+]
