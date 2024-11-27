@@ -69,7 +69,7 @@ const Page = () => {
               <MockDiscordUI>
                 <AnimatedList>
                   <DiscordMessage
-                    avatarSrc="/brand-asset-profile-picture.png"
+                    avatarSrc="/brand-asset-profile-picture.webp"
                     avatarAlt="PingPanda Avatar"
                     username="PingPanda"
                     timestamp="Today at 12:35PM"
@@ -82,7 +82,7 @@ const Page = () => {
                     }}
                   />
                   <DiscordMessage
-                    avatarSrc="/brand-asset-profile-picture.png"
+                    avatarSrc="/brand-asset-profile-picture.webp"
                     avatarAlt="PingPanda Avatar"
                     username="PingPanda"
                     timestamp="Today at 12:35PM"
@@ -96,7 +96,7 @@ const Page = () => {
                     }}
                   />
                   <DiscordMessage
-                    avatarSrc="/brand-asset-profile-picture.png"
+                    avatarSrc="/brand-asset-profile-picture.webp"
                     avatarAlt="PingPanda Avatar"
                     username="PingPanda"
                     timestamp="Today at 5:11AM"
@@ -144,7 +144,7 @@ const Page = () => {
                   <div className="absolute inset-x-10 bottom-0 top-10 overflow-hidden rounded-t-[12cqw] border-x-[3cqw] border-t-[3cqw] border-gray-700 bg-gray-900 shadow-2xl">
                     <Image
                       className="size-full object-cover object-top"
-                      src="/phone-screen.png"
+                      src="/phone-screen.webp"
                       alt="Phone screen displaying app interface"
                       fill
                     />
@@ -171,7 +171,7 @@ const Page = () => {
                 <div className="flex flex-1 items-center justify-center px-8 max-lg:pb-12 max-lg:pt-10 sm:px-10 lg:pb-2">
                   <Image
                     className="w-full max-lg:max-w-xs"
-                    src="/bento-any-event.png"
+                    src="/bento-any-event.webp"
                     alt="Bento box illustrating event tracking"
                     width={500}
                     height={300}
@@ -199,7 +199,7 @@ const Page = () => {
                 <div className="flex flex-1 items-center justify-center px-8 max-lg:pb-12 max-lg:pt-10 sm:px-10 lg:pb-2">
                   <Image
                     className="w-full max-lg:max-w-xs"
-                    src="/bento-custom-data.png"
+                    src="/bento-custom-data.webp"
                     alt="Bento box illustrating custom data tracking"
                     width={500}
                     height={300}
