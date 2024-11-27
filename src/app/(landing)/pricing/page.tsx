@@ -8,7 +8,6 @@ import { useUser } from "@clerk/nextjs"
 import { useMutation } from "@tanstack/react-query"
 import { CheckIcon } from "lucide-react"
 import { useRouter } from "next/navigation"
-import { ShinyButton } from "@/components/shiny-button"
 
 const Page = () => {
   const { user } = useUser()
@@ -45,8 +44,8 @@ const Page = () => {
         <div className="mx-auto max-w-2xl sm:text-center">
           <Heading className="text-center">Simple no-tricks pricing</Heading>
           <p className="mt-6 text-base/7 text-gray-600 max-w-prose text-center text-pretty">
-            We hate subscriptions. And chances are, you do too. That's why we
-            offer lifetime access to PingPanda for a one-time payment.
+            We hate subscriptions. And chances are, you do too. That&apos;s why
+            we offer lifetime access to PingPanda for a one-time payment.
           </p>
         </div>
 
@@ -63,7 +62,7 @@ const Page = () => {
             </p>
             <div className="mt-10 flex items-center gap-x-4">
               <h4 className="flex-none text-sm font-semibold leading-6 text-brand-600">
-                What's included
+                What&apos;s included
               </h4>
               <div className="h-px flex-auto bg-gray-100" />
             </div>
@@ -93,12 +92,12 @@ const Page = () => {
                   </span>
                 </p>
 
-                <ShinyButton
+                <Button
                   onClick={handleGetAccess}
                   className="mt-6 px-20 relative z-10 h-14 w-max text-base shadow-lg transition-shadow duration-300 hover:shadow-xl"
                 >
                   Get PingPanda
-                </ShinyButton>
+                </Button>
                 <p className="mt-6 text-xs leading-5 text-gray-600">
                   It is totally free, this is just a demo app.
                 </p>

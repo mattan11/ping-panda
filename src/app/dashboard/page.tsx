@@ -6,6 +6,7 @@ import { PlusIcon } from "lucide-react"
 import { DashboardPage } from "@/components/dashboard-page"
 import { DashboardPageContent } from "@/app/dashboard/dashboard-page-content"
 import { CreateEventCategoryModal } from "@/components/create-event-category-modal"
+import { PaymentSuccessModal } from "@/components/payment-success-modal"
 
 interface PageProps {
   searchParams: {
@@ -30,20 +31,15 @@ const Page = async ({ searchParams }: PageProps) => {
 
   const intent = searchParams.intent
 
-  // if (intent === "upgrade") {
-  //   const session = await createCheckoutSession({
-  //     userEmail: user.email,
-  //     userId: user.id,
-  //   })
-  //
-  //   if (session.url) redirect(session.url)
-  // }
+  if (intent === "upgrade") {
+    return redirect("/dashboard/upgrade")
+  }
 
   const success = searchParams.success
 
   return (
     <>
-      {/*{success ? <PaymentSuccessModal /> : null}*/}
+      {success ? <PaymentSuccessModal /> : null}
 
       <DashboardPage
         title="Dashboard"
