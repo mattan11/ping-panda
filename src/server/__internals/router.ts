@@ -99,7 +99,7 @@ export const router = <T extends Record<string, OperationType<any, any>>>(
       if (operation.schema) {
         route.post(
           path,
-          // bodyParsingMiddleware,
+          bodyParsingMiddleware,
           ...operationMiddlewares,
           (c) => {
             const ctx = c.get("__middleware_output") || {}
