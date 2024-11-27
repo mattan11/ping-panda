@@ -4,7 +4,7 @@ import { MiddlewareHandler, Variables } from "hono/types"
 import { StatusCode } from "hono/utils/http-status"
 import { ZodError } from "zod"
 import { Bindings } from "../env"
-// import { bodyParsingMiddleware, queryParsingMiddleware } from "./middleware"
+import { bodyParsingMiddleware, queryParsingMiddleware } from "./middleware"
 import { MutationOperation, QueryOperation } from "./types"
 
 type OperationType<I extends Record<string, unknown>, O> =
@@ -65,7 +65,7 @@ export const router = <T extends Record<string, OperationType<any, any>>>(
       if (operation.schema) {
         route.get(
           path,
-          // queryParsingMiddleware,
+          queryParsingMiddleware,
           ...operationMiddlewares,
           (c) => {
             const ctx = c.get("__middleware_output") || {}
