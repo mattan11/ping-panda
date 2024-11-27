@@ -1,6 +1,6 @@
 // 👇 constant value in all uppercase
 export const FREE_QUOTA = {
-  maxEventsPerMonth: 100,
+  maxEventsPerMonth: 10,
   maxEventCategories: 3,
 } as const
 
