@@ -172,7 +172,7 @@ export const categoryRouter = router({
           startDate = startOfDay(now)
           break
         case "week":
-          startDate = startOfWeek(now, { weekStartsOn: 0 })
+          startDate = startOfWeek(now, { weekStartsOn: 1 })
           break
         case "month":
           startDate = startOfMonth(now)
@@ -210,11 +210,16 @@ export const categoryRouter = router({
           })
           .then((events) => {
             const fieldNames = new Set<string>()
-            events.forEach((event) => {
-              Object.keys(event.fields as object).forEach((fieldName) => {
+            // events.forEach((event) => {
+            //   Object.keys(event.fields as object).forEach((fieldName) => {
+            //     fieldNames.add(fieldName)
+            //   })
+            // })
+            for (const event of events) {
+              for (const fieldName of Object.keys(event.fields as object)) {
                 fieldNames.add(fieldName)
-              })
-            })
+              }
+            }
             return fieldNames.size
           }),
       ])
