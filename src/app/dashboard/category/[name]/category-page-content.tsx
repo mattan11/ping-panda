@@ -34,6 +34,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { TableNoResults } from "@/components/TableNoResults"
+import { TableLoading } from "@/components/TableLoading"
 
 interface CategoryPageContentProps {
   hasEvents: boolean
@@ -247,15 +249,7 @@ export const CategoryPageContent = ({
 
             <TableBody>
               {isFetching ? (
-                [...Array(5)].map((_, rowIndex) => (
-                  <TableRow key={rowIndex}>
-                    {columns.map((_, cellIndex) => (
-                      <TableCell key={cellIndex}>
-                        <div className="h-4 w-full bg-gray-200 animate-pulse rounded" />
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                ))
+                <TableLoading columns={columns} />
               ) : table.getRowModel().rows.length ? (
                 table.getRowModel().rows.map((row) => (
                   <TableRow key={row.id}>
@@ -270,14 +264,7 @@ export const CategoryPageContent = ({
                   </TableRow>
                 ))
               ) : (
-                <TableRow>
-                  <TableCell
-                    colSpan={columns.length}
-                    className="h-24 text-center"
-                  >
-                    No results.
-                  </TableCell>
-                </TableRow>
+                <TableNoResults columns={columns} />
               )}
             </TableBody>
           </Table>
